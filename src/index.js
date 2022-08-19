@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/characters", charactersRoutes);
 // app.use("/users", usersRoutes);
 
-const port = process.env.PORT ?? 4000;
+const port = process.env.PORT ?? 3001;
 app.listen(port, () => {
   console.log(`Running at http://localhost:${port}`);
 });
