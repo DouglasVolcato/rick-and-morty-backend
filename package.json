@@ -1,0 +1,31 @@
+{
+  "name": "rick-and-morty-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DouglasVolcato/rick-and-morty-backend.git"
+  },
+  "keywords": [
+    "backend",
+    "api"
+  ],
+  "author": "Douglas Volcato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DouglasVolcato/rick-and-morty-backend/issues"
+  },
+  "homepage": "https://github.com/DouglasVolcato/rick-and-morty-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2",
+    "nodemon": "^2.0.19"
+  }
+}
