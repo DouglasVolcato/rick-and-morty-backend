@@ -1,20 +1,22 @@
 const express = require("express");
-const app = express()
-const cors = require("cors")
-const connectToDatabase = require("./database/database")
-require("dotenv").config()
+const app = express();
+const cors = require("cors");
+const connectToDatabase = require("./database/database");
+require("dotenv").config();
 
-// const authRoute = require("./src/auth")
-// const characters = require("./src/characters")
-// const usersRoute = require("./src/users")
+// const authRoutes = require("./src/auth");
+const charactersRoutes = require("./characters/characters.routes");
+// const usersRoutes = require("./src/users");
 
-connectToDatabase()
-app.use(cors())
-app.use(express.json())
+connectToDatabase();
+app.use(cors());
+app.use(express.json());
 
-app.get("/", (req,res) => res.send({message: "Hello World!"}))
+// app.use("/auth", authRoutes);
+app.use("/characters", charactersRoutes);
+// app.use("/users", usersRoutes);
 
-const port = process.env.PORT ?? 3100
+const port = process.env.PORT ?? 4000;
 app.listen(port, () => {
-    console.log(`Running at http://localhost:${port}`)
-})
+  console.log(`Running at http://localhost:${port}`);
+});
