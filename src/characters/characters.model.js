@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const characterSchema = new mongoose.Schema({
-  user: String,
-  name: String,
-  imageUrl: String,
+  user: { type: String, required: true },
+  name: { type: String, required: true },
+  imageUrl: { type: String, required: true },
 });
 
 module.exports = Character = mongoose.model("character", characterSchema);
