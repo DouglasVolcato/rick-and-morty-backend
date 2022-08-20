@@ -2,7 +2,7 @@ const User = require("../users/users.model");
 
 class AuthServices {
   findUser = async (email) => {
-    return await User.findOne({ email: email });
+    return await User.findOne({ email: email }).select("+password");
   };
 
   verifyPassword = async (password, user) => {

@@ -4,6 +4,9 @@ class CharactersServices {
   createCharactersService = async (body) => {
     return await Character.create(body);
   };
+  findByNameService = async (name) => {
+    return await Character.findOne({ name: name });
+  };
   getAllCharactersService = async () => {
     return await Character.find();
   };

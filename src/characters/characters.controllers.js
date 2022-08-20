@@ -4,18 +4,24 @@ class CharactersControllers {
   createCharactersController = async (req, res) => {
     try {
       const { user, name, imageUrl } = req.body;
-      const created = await charactersServices.createCharactersService({
-        user,
-        name,
-        imageUrl,
-      });
-      if (!created) {
-        res.status(400).send({ message: "Bad Request" });
+      const findByName = await charactersServices.findByNameService(name);
+
+      if (findByName) {
+        res.status(400).send({ message: "Name already registered" });
       } else {
-        res.status(201).send(created);
+        const created = await charactersServices.createCharactersService({
+          user,
+          name,
+          imageUrl,
+        });
+        if (!created) {
+          res.status(400).send({ message: "Error creating user" });
+        } else {
+          res.status(201).send(created);
+        }
       }
     } catch (err) {
-      res.status(400).send({ message: "Bad Request" });
+      res.status(400).send({ message: "Error creating user" });
     }
   };
 
@@ -23,12 +29,12 @@ class CharactersControllers {
     try {
       const characterList = await charactersServices.getAllCharactersService();
       if (!characterList || characterList.length === 0) {
-        res.status(401).send({ message: "Not found" });
+        res.status(404).send({ message: "Characters not found" });
       } else {
         res.status(200).send(characterList);
       }
     } catch (err) {
-      res.status(401).send({ message: "Not found" });
+      res.status(404).send({ message: "Error getting characters" });
     }
   };
 
@@ -36,30 +42,30 @@ class CharactersControllers {
     try {
       const foundChar = await charactersServices.findByIdService(req.params.id);
       if (!foundChar) {
-        res.status(400).send({ message: "Not Found" });
+        res.status(400).send({ message: "Id not Found" });
       } else {
         res.status(200).send(foundChar);
       }
     } catch (err) {
-      res.status(400).send({ message: "Not Found" });
+      res.status(400).send({ message: "Error finding id" });
     }
   };
 
   updateCharactersController = async (req, res) => {
-    const id = req.params.id;
     try {
+      const id = req.params.id;
       const { name, imageUrl } = req.body;
       const updated = await charactersServices.updateCharactersService(id, {
         name,
         imageUrl,
       });
       if (!updated) {
-        res.status(400).send({ message: "Bad Request" });
+        res.status(400).send({ message: "Id not found" });
       } else {
         res.status(200).send(updated);
       }
     } catch (err) {
-      res.status(400).send({ message: "Bad Request" });
+      res.status(400).send({ message: "Error updating character" });
     }
   };
 
@@ -69,12 +75,12 @@ class CharactersControllers {
         req.params.id
       );
       if (!deleatedChar) {
-        res.status(400).send({ message: "Not Found" });
+        res.status(400).send({ message: "Id not Found" });
       } else {
         res.status(200).send(deleatedChar);
       }
     } catch (err) {
-      res.status(400).send({ message: "Not Found" });
+      res.status(400).send({ message: "Error deleting character" });
     }
   };
 
@@ -86,12 +92,12 @@ class CharactersControllers {
         name
       );
       if (!searchedChar) {
-        res.status(400).send({ message: "Not Found" });
+        res.status(404).send({ message: "Name not Found" });
       } else {
         res.status(200).send(searchedChar);
       }
     } catch (err) {
-      res.status(400).send({ message: "Not Found" });
+      res.status(404).send({ message: "Error finding character" });
     }
   };
 }

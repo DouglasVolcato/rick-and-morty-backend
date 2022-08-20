@@ -8,6 +8,14 @@ class UsersServices {
   getAllUsersService = async () => {
     return await User.find();
   };
+
+  findByUsername = async (username) => {
+    return await User.findOne({ username: username });
+  };
+
+  findByEmail = async (email) => {
+    return await User.findOne({ email: email });
+  };
 }
 
 module.exports = usersServices = new UsersServices();
