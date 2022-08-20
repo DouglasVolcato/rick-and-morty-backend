@@ -12,7 +12,7 @@ class CharactersControllers {
       if (!created) {
         res.status(400).send({ message: "Bad Request" });
       } else {
-        res.status(201).send("Created");
+        res.status(201).send(created);
       }
     } catch (err) {
       res.status(400).send({ message: "Bad Request" });
@@ -22,13 +22,13 @@ class CharactersControllers {
   getAllCharactersController = async (req, res) => {
     try {
       const characterList = await charactersServices.getAllCharactersService();
-      if (!characterList) {
-        req.status(401).res({ message: "Not found" });
+      if (!characterList || characterList.length === 0) {
+        res.status(401).send({ message: "Not found" });
       } else {
         res.status(200).send(characterList);
       }
     } catch (err) {
-      req.status(401).res({ message: "Not found" });
+      res.status(401).send({ message: "Not found" });
     }
   };
 
