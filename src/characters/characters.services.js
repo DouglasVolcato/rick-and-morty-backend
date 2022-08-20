@@ -16,9 +16,9 @@ class CharactersServices {
   deleteCharacterService = async (id) => {
     return await Character.findOneAndDelete({ _id: id });
   };
-  //   searchCharactersService = async (name) => {
-  //     return await Character.find({ name: name });
-  //   };
+  searchCharactersService = async (name) => {
+    return await Character.findOne({ name: name });
+  };
 }
 
 module.exports = charactersServices = new CharactersServices();
