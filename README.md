@@ -1,15 +1,15 @@
 # rick-and-morty-backend
 
-# Endpoints (4 pontos)
-- [POST] Criar usuários (1 ponto);
-- [GET] Buscar todos os usuários (1 ponto);
-- [POST] Login de usuários (1 ponto);
-- [GET] Buscar personagens por nome (1 ponto).
+# Endpoints
+- [POST] Criar usuários;
+- [GET] Buscar todos os usuários;
+- [POST] Login de usuários;
+- [GET] Buscar personagens por nome.
 
-# Requisitos (6 pontos)
-- Persistência de dados no MongoDB Atlas (1 ponto);
-- Formatação do código utilizando o Prettier (1 ponto);
-- Documentação Swagger: (1 ponto);
-- Status Code corretos em todos os endpoints (1 ponto);
-- Deploy no Heroku (1 ponto);
-- Autenticacao JWT (1 ponto).
+- Persistência de dados no MongoDB Atlas;
+- Formatação do código utilizando o Prettier ;
+
+- Documentação Swagger:;
+- Status Code corretos em todos os endpoints;
+- Deploy no Heroku;
+- Autenticacao JWT.
