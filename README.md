@@ -1,7 +1,7 @@
 # rick-and-morty-backend
 
 # Swagger
--link: https://rick-and-morty-backend-crud.herokuapp.com/docs/
+Llink: https://rick-and-morty-backend-crud.herokuapp.com/docs/
 
 # Endpoints (4 pontos)
 - [POST] Criar usuários (1 ponto);
