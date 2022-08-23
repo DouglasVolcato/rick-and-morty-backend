@@ -27,7 +27,12 @@ class CharactersControllers {
 
   getAllCharactersController = async (req, res) => {
     try {
-      const characterList = await charactersServices.getAllCharactersService();
+      const limit = req.query.limit;
+      const offset = req.query.offset;
+      const characterList = await charactersServices.getAllCharactersService(
+        limit,
+        offset
+      );
       if (!characterList || characterList.length === 0) {
         res.status(404).send({ message: "Characters not found" });
       } else {
@@ -41,7 +46,7 @@ class CharactersControllers {
   findByIdController = async (req, res) => {
     try {
       const foundChar = await charactersServices.findByIdService(req.params.id);
-      if (!foundChar) {
+      if (!foundChar || foundChar.length === 0) {
         res.status(400).send({ message: "Id not Found" });
       } else {
         res.status(200).send(foundChar);
@@ -60,7 +65,7 @@ class CharactersControllers {
         imageUrl,
       });
       if (!updated) {
-        res.status(400).send({ message: "Id not found" });
+        res.status(400).send({ message: "Id not found2" });
       } else {
         res.status(200).send(updated);
       }
@@ -86,7 +91,7 @@ class CharactersControllers {
 
   searchCharactersController = async (req, res) => {
     try {
-      const name = req.params.name;
+      const name = req.query.name;
 
       const searchedChar = await charactersServices.searchCharactersService(
         name

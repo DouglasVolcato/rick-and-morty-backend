@@ -7,9 +7,6 @@ class CharactersServices {
   findByNameService = async (name) => {
     return await Character.findOne({ name: name });
   };
-  getAllCharactersService = async () => {
-    return await Character.find();
-  };
   findByIdService = async (id) => {
     return await Character.find({ _id: id });
   };
@@ -21,6 +18,14 @@ class CharactersServices {
   };
   searchCharactersService = async (name) => {
     return await Character.findOne({ name: name });
+  };
+  getAllCharactersService = async (limit, offset) => {
+    const allCharacters = await Character.find();
+    const setOffset = Number(offset) > 0 ? Number(offset - 1) : 0;
+    const setLimit =
+      Number(limit) > 0 ? Number(limit) : allCharacters.length - 1 - setOffset;
+    const showCharacters = await allCharacters.splice(setOffset, setLimit);
+    return await showCharacters;
   };
 }
 
