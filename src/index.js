@@ -12,6 +12,10 @@ connectToDatabase();
 app.use(cors());
 app.use(express.json());
 
+const swagger = require("swagger-ui-express");
+const swaggerDocs = require("./docs/swagger.json");
+app.use("/", swagger.serve, swagger.setup(swaggerDocs));
+
 app.use("/auth", authRoutes);
 app.use("/characters", charactersRoutes);
 app.use("/users", usersRoutes);
