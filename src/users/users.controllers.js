@@ -23,7 +23,7 @@ class UsersControllers {
         });
 
         if (!created) {
-          res.status(400).send({ message: "Error creating use" });
+          res.status(400).send({ message: "Error creating user" });
         } else {
           res.status(201).send(created);
         }

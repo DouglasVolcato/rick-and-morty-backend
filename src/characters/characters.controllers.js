@@ -15,13 +15,13 @@ class CharactersControllers {
           imageUrl,
         });
         if (!created) {
-          res.status(400).send({ message: "Error creating user" });
+          res.status(400).send({ message: "Error creating character" });
         } else {
           res.status(201).send(created);
         }
       }
     } catch (err) {
-      res.status(400).send({ message: "Error creating user" });
+      res.status(400).send({ message: "Error creating character" });
     }
   };
 
@@ -65,7 +65,7 @@ class CharactersControllers {
         imageUrl,
       });
       if (!updated) {
-        res.status(400).send({ message: "Id not found2" });
+        res.status(400).send({ message: "Id not found" });
       } else {
         res.status(200).send(updated);
       }
