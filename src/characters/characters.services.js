@@ -23,7 +23,7 @@ class CharactersServices {
     const allCharacters = await Character.find();
     const setOffset = Number(offset) > 0 ? Number(offset - 1) : 0;
     const setLimit =
-      Number(limit) > 0 ? Number(limit) : allCharacters.length - 1 - setOffset;
+      Number(limit) > 0 ? Number(limit) : allCharacters.length - setOffset;
     const showCharacters = await allCharacters.splice(setOffset, setLimit);
     return await showCharacters;
   };
