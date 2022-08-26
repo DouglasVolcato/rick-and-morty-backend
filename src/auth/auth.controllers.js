@@ -22,7 +22,6 @@ class AuthControllers {
       }
     } catch (err) {
       res.status(400).send({ message: "Error during login" });
-      console.log(err);
     }
   };
 }

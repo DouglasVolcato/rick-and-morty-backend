@@ -10,8 +10,6 @@ module.exports = (req, res, next) => {
 
   const split = authorization.split(" ");
 
-//   console.log(split)
-
   if (!split || split[0] !== "Bearer" || split.length !== 2) {
     return res.status(401).send({ message: "Invalid token" });
   }
