@@ -1,6 +1,6 @@
 # rick-and-morty-backend
 
-Frntend: https://rick-and-morty-frontend.vercel.app/
+Frontend: https://rick-and-morty-frontend.vercel.app/
 
 # Swagger
 Link documentação: https://rick-and-morty-backend-crud.herokuapp.com/docs/
