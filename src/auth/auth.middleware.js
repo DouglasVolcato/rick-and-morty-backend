@@ -8,12 +8,20 @@ module.exports = (req, res, next) => {
     return res.status(401).send({ message: "The token was not informed" });
   }
 
-  jwt.verify(authorization, process.env.SECRET, async (err, decoded) => {
+  const split = authorization.split(" ");
+
+//   console.log(split)
+
+  if (!split || split[0] !== "Bearer" || split.length !== 2) {
+    return res.status(401).send({ message: "Invalid token" });
+  }
+
+  jwt.verify(split[1], process.env.SECRET, async (err, decoded) => {
     if (err) {
       return res.status(401).send({ message: "Invalid token" });
     }
 
-    const user = await authServices.findUserById(decoded.id);
+    const user = await authServices.findUserById(decoded._id);
 
     if (!user || !user._id) {
       return res.status(401).send({ message: "Invalid token" });
