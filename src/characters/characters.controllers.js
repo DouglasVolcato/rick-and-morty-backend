@@ -47,12 +47,12 @@ class CharactersControllers {
     try {
       const foundChar = await charactersServices.findByIdService(req.params.id);
       if (!foundChar || foundChar.length === 0) {
-        res.status(400).send({ message: "Id not Found" });
+        res.status(404).send({ message: "Id not Found" });
       } else {
         res.status(200).send(foundChar);
       }
     } catch (err) {
-      res.status(400).send({ message: "Error finding id" });
+      res.status(404).send({ message: "Error finding id" });
     }
   };
 
@@ -80,12 +80,12 @@ class CharactersControllers {
         req.params.id
       );
       if (!deleatedChar) {
-        res.status(400).send({ message: "Id not Found" });
+        res.status(404).send({ message: "Id not Found" });
       } else {
         res.status(200).send(deleatedChar);
       }
     } catch (err) {
-      res.status(400).send({ message: "Error deleting character" });
+      res.status(404).send({ message: "Error deleting character" });
     }
   };
 
