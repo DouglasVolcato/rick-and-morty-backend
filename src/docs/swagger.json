@@ -24,7 +24,9 @@
       "post": {
         "summary": "Creates new user",
         "description": "Route responsable for creating a new user",
-        "tags": ["User"],
+        "tags": [
+          "User"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -67,8 +69,14 @@
       "get": {
         "summary": "Show the users",
         "description": "Route responsable for showing the users",
-        "tags": ["User"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -96,7 +104,9 @@
       "post": {
         "summary": "Login in Rick and Morty API",
         "description": "Route responsable for the login",
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -140,8 +150,14 @@
       "post": {
         "summary": "Creates a new character",
         "description": "Route responsable for creating a new character",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -185,8 +201,14 @@
       "get": {
         "summary": "Show the characters",
         "description": "Route responsable for showing the characters",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
@@ -226,8 +248,14 @@
       "get": {
         "summary": "Search a character by id",
         "description": "Route responsable for searching a character by id",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -261,8 +289,14 @@
       "put": {
         "summary": "Edit character by id",
         "description": "Route responsable for editing a character by id",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -310,8 +344,14 @@
       "delete": {
         "summary": "Delete a character by id",
         "description": "Route responsable for deleting a character by id",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "name": "id",
@@ -345,8 +385,14 @@
       "get": {
         "summary": "Search character by name",
         "description": "Route responsable for searching a character by name",
-        "tags": ["Character"],
-        "security": [{ "token": [] }],
+        "tags": [
+          "Character"
+        ],
+        "security": [
+          {
+            "token": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
