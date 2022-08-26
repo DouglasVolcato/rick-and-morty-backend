@@ -1,8 +1,13 @@
 const User = require("../users/users.model");
+const jwt = require("jsonwebtoken");
 
 class AuthServices {
-  findUser = async (email) => {
+  findUserByEmail = async (email) => {
     return await User.findOne({ email: email }).select("+password");
+  };
+
+  findUserById = async (userId) => {
+    return await User.findOne({ _id: userId }).select("+password");
   };
 
   verifyPassword = async (password, user) => {
@@ -12,6 +17,9 @@ class AuthServices {
       return false;
     }
   };
+
+  generateToken = (userId) =>
+    jwt.sign({ _id: userId }, process.env.SECRET, { expiresIn: 86400 });
 }
 
 module.exports = authServices = new AuthServices();

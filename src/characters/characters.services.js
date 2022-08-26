@@ -5,7 +5,7 @@ class CharactersServices {
     return await Character.create(body);
   };
   findByNameService = async (name) => {
-    return await Character.findOne({ name: name });
+    return await Character.find({ name: {$regex : /name/i} });
   };
   findByIdService = async (id) => {
     return await Character.find({ _id: id });
