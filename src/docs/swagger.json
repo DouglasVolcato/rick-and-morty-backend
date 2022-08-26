@@ -50,7 +50,7 @@
             "description": "Created",
             "content": {
               "application/json": {
-                "schemma": {
+                "schema": {
                   "type": "object",
                   "$ref": "#/components/schemas/User"
                 }
@@ -68,6 +68,7 @@
         "summary": "Show the users",
         "description": "Route responsable for showing the users",
         "tags": ["User"],
+        "security": [{ "token": [] }],
         "responses": {
           "200": {
             "description": "OK",
@@ -84,6 +85,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -91,7 +95,7 @@
     "/auth/login": {
       "post": {
         "summary": "Login in Rick and Morty API",
-        "description": "Route responsable for te login",
+        "description": "Route responsable for the login",
         "tags": ["Auth"],
         "requestBody": {
           "content": {
@@ -112,7 +116,19 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -125,6 +141,7 @@
         "summary": "Creates a new character",
         "description": "Route responsable for creating a new character",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -148,7 +165,7 @@
             "description": "Created",
             "content": {
               "application/json": {
-                "schemma": {
+                "schema": {
                   "type": "object",
                   "$ref": "#/components/schemas/Character"
                 }
@@ -169,6 +186,7 @@
         "summary": "Show the characters",
         "description": "Route responsable for showing the characters",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "parameters": [
           {
             "in": "query",
@@ -209,6 +227,7 @@
         "summary": "Search a character by id",
         "description": "Route responsable for searching a character by id",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "parameters": [
           {
             "name": "id",
@@ -224,9 +243,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "items": {
-                    "$ref": "#/components/schemas/Character"
-                  }
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -245,6 +262,7 @@
         "summary": "Edit character by id",
         "description": "Route responsable for editing a character by id",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "parameters": [
           {
             "name": "id",
@@ -293,6 +311,7 @@
         "summary": "Delete a character by id",
         "description": "Route responsable for deleting a character by id",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "parameters": [
           {
             "name": "id",
@@ -303,10 +322,21 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
           },
-          "400": {
-            "description": "Bad Request"
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -316,6 +346,7 @@
         "summary": "Search character by name",
         "description": "Route responsable for searching a character by name",
         "tags": ["Character"],
+        "security": [{ "token": [] }],
         "parameters": [
           {
             "in": "query",
@@ -330,10 +361,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Character"
-                  }
+                  "type": "object",
+                  "$ref": "#/components/schemas/Character"
                 }
               }
             }
@@ -384,6 +413,16 @@
           }
         }
       }
+    },
+    "securitySchemes": {
+      "token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
+  },
+  "security": {
+    "token": []
   }
 }
